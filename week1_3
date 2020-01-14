@@ -1,0 +1,33 @@
+import math
+R = 15000000000000000 # 太陽系の半径は15兆キロメートル
+Vt = 4*math.pi/3*(R**3) # 太陽系は完全な球体と仮定し体積を求める
+
+Vm = 100/1000000 # 栗饅頭の体積は100立方センチメートル（0.0001立方メートル）
+i = 0 # 栗饅頭の増殖回数
+# print(Vt)
+# print(Vm)
+n = 1
+gra_list = []
+t_gra_list = []
+time_list = []
+
+while n >= 1:
+    n = Vt/(Vm*2**i)
+    gra_list.append(Vm*2**i)
+    t_gra_list.append(Vt)
+    time_list.append(i*5)
+    i = i + 1
+
+
+time = (i - 1)*5 # 栗饅頭が太陽系を埋め尽くすまでの時間（分）
+# print(time)
+# print(time_list)
+import matplotlib.pyplot as plt
+
+plt.title("baibain")
+plt.xlabel("time[m]")
+plt.ylabel("V[m^3]")
+#plt.yscale('log') #対数グラフにする
+plt.plot(time_list, gra_list, color='g')
+plt.plot(time_list, t_gra_list, color='b')
+plt.show()
